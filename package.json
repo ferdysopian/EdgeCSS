@@ -3,7 +3,7 @@
     "private": true,
     "version": "0.0.0",
     "type": "module",
-    "homepage": "https://ferdysopian.github.io/EdgeCSS",
+    "homepage": "https://ferdysopian.github.io/edgecss",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
