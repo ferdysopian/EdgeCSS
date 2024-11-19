@@ -1,9 +1,9 @@
 {
-    "name": "edgecss",
+    "name": "EdgeCSS",
     "private": true,
     "version": "0.0.0",
     "type": "module",
-    "homepage": "https://ferdysopian.github.io/edgecss",
+    "homepage": "https://ferdysopian.github.io/EdgeCSS",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
