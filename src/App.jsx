@@ -1,3 +1,4 @@
+import CSSForm from './components/CSSForm'
 import Header from './components/Header'
 
 const App = () => {
@@ -6,6 +7,7 @@ const App = () => {
             <div className='min-h-screen bg-gray-50'>
                 <Header />
                 <main>
+                    <CSSForm />
                 </main>
 
                 <footer className='bg-gray-900 text-gray-400 py-12'>
