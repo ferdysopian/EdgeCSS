@@ -228,7 +228,7 @@ export default function CSSForm() {
                 <ol className='list-decimal list-inside text-gray-600 space-y-2'>
                     <li>Copy the generated critical CSS to your clipboard.</li>
                     <li>
-                        <p className='mb-2 inline-block'>Add the following code to the head of your HTML document:</p>
+                        <p className='mb-2 inline'>Add the following code to the head of your HTML document:</p>
                         <div className='bg-gray-900 rounded-lg p-4 mb-4'>
                             <div className='flex justify-between items-center mb-4'>
                                 <div className='space-x-2'>
@@ -245,7 +245,7 @@ export default function CSSForm() {
                         </div>
                     </li>
                     <li>
-                        <p className='mb-2 inline-block'>Include a script to apply the Critical CSS only during the initial load and disable it afterward:</p>
+                        <p className='mb-2 inline'>Include a script to apply the Critical CSS only during the initial load and disable it afterward:</p>
                         <div className='bg-gray-900 rounded-lg p-4 mb-4'>
                             <div className='flex justify-between items-center mb-4'>
                                 <div className='space-x-2'>
