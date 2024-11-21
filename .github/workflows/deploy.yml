@@ -1,40 +1,39 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches:
-      - main  # Trigger on push to the main branch
+    push:
+        branches:
+            - main # Trigger on push to the main branch
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+    build:
+        runs-on: ubuntu-latest
 
-    steps:
-      # Checkout the repository
-      - name: Checkout repository
-        uses: actions/checkout@v2
+        steps:
+            # Checkout the repository
+            - name: Checkout repository
+              uses: actions/checkout@v2
 
-      # Set up Node.js (with the correct version from your `package.json`)
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '21'  # Change this if you need a different version
+            # Set up Node.js (with the correct version from your `package.json`)
+            - name: Set up Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: '21' # Change this if you need a different version
 
-      # Install dependencies
-      - name: Install dependencies
-        run: npm install
+            # Install dependencies
+            - name: Install dependencies
+              run: npm install
 
-      # # set BASE_API_URL as an environment variable
-      # - name: Set environment variables
-      #   run: echo "BASE_API_URL=https://your-api-url.com" >> $GITHUB_ENV
+            # Run the build process using Vite
+            - name: Build the project
+              run: npm run build
+              env:
+                  VITE_BASE_API_URL: ${{ vars.BASE_API_URL }}
 
-      # Run the build process using Vite
-      - name: Build the project
-        run: npm run build
-
-      # Deploy to GitHub Pages using gh-pages
-      - name: Deploy to GitHub Pages
-        run: npm run deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}  # GitHub automatically provides this token
-          BASE_API_URL: ${{ secrets.BASE_API_URL }}  # Using GitHub Secrets if you prefer
+            # Deploy to GitHub Pages using peaceiris/actions-gh-pages
+            - name: Deploy
+              uses: peaceiris/actions-gh-pages@v4
+              if: github.ref == 'refs/heads/main'
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: ./dist
