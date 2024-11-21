@@ -6,9 +6,13 @@ on:
             - main # Trigger on push to the main branch
     workflow_dispatch:
 
+env:
+    VITE_BASE_API_URL: ${{ secrets.VITE_BASE_API_URL }}
+
 jobs:
     build:
         runs-on: ubuntu-latest
+        environment: github-pages # Specify the GitHub environment
 
         steps:
             # Checkout the repository
@@ -25,22 +29,15 @@ jobs:
             - name: Install dependencies
               run: npm install
 
-            - name: env setup
-              run: |
-                  export VITE_BASE_API_URL=${{secrets.VITE_BASE_API_URL}}
-
-            # Check if secrets.VITE_BASE_API_URL work.
-            - name: Check if VITE_API_BASE_URL works
-              run: echo $VITE_BASE_API_URL
+            # Debugging the environment variable
+            - name: Verify Environment Variable
+              run: echo "VITE_BASE_API_URL=${{ secrets.VITE_BASE_API_URL }}"
 
             # Run the build process using Vite
             - name: Build the project
               run: npm run build
-            
-            # Add a small change to force commit
-            - name: Ensure there are changes to commit
-              run: |
-                  echo "Build triggered at $(date)" >> ./build/build-info.txt
+              env:
+                  VITE_BASE_API_URL: ${{ secrets.VITE_BASE_API_URL }}
 
             # Deploy to GitHub Pages using peaceiris/actions-gh-pages
             - name: Deploy
