@@ -1,6 +1,16 @@
 import axios from 'axios'
 import { parse as parseDomain } from 'tldts'
-const apiUrl = import.meta.env.VITE_BASE_API_URL
+
+const getEnvVariable = (key, fallback = '') => {
+    const value = import.meta.env[key];
+    if (!value && fallback) {
+        console.warn(`Warning: Environment variable ${key} is not set. Falling back to: ${fallback}`);
+        return fallback;
+    }
+    return value;
+};
+
+const apiUrl = getEnvVariable('VITE_BASE_API_URL', 'http://localhost:3000');
 
 const axiosInstance = axios.create({
     baseURL: apiUrl,
