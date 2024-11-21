@@ -14,7 +14,7 @@ const apiUrl = getEnvVariable('VITE_BASE_API_URL', 'http://localhost:3000');
 
 const axiosInstance = axios.create({
     baseURL: apiUrl,
-    timeout: 10000,
+    timeout: 100000,
     headers: {
         'Content-Type': 'application/json',
     },
