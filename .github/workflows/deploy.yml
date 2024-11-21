@@ -39,6 +39,11 @@ jobs:
               env:
                   VITE_BASE_API_URL: ${{ secrets.VITE_BASE_API_URL }}
 
+            # Add a small change to force commit
+            - name: Ensure there are changes to commit
+              run: |
+                  echo "Build triggered at $(date)" >> ./build/build-info.txt
+
             # Deploy to GitHub Pages using peaceiris/actions-gh-pages
             - name: Deploy
               uses: peaceiris/actions-gh-pages@v4
