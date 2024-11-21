@@ -5,9 +5,6 @@ on:
         branches:
             - main # Trigger on push to the main branch
 
-env:
-    VITE_BASE_API_URL: ${{ secrets.VITE_BASE_API_URL }}
-
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -26,6 +23,14 @@ jobs:
             # Install dependencies
             - name: Install dependencies
               run: npm install
+
+            - name: env setup
+              run: | 
+                  export VITE_API_BASE_URL=${{secrets.VITE_API_BASE_URL}}
+
+            # Check if secrets.VITE_BASE_API_URL work.
+            - name: Check if VITE_API_BASE_URL works
+              run: echo $VITE_BASE_API_URL
 
             # Run the build process using Vite
             - name: Build the project
