@@ -25,8 +25,8 @@ jobs:
               run: npm install
 
             - name: env setup
-              run: | 
-                  export VITE_API_BASE_URL=${{secrets.VITE_API_BASE_URL}}
+              run: |
+                  export VITE_BASE_API_URL=${{secrets.VITE_BASE_API_URL}}
 
             # Check if secrets.VITE_BASE_API_URL work.
             - name: Check if VITE_API_BASE_URL works
