@@ -36,5 +36,5 @@ jobs:
       - name: Deploy to GitHub Pages
         run: npm run deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub automatically provides this token
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}  # GitHub automatically provides this token
           BASE_API_URL: ${{ secrets.BASE_API_URL }}  # Using GitHub Secrets if you prefer
