@@ -5,6 +5,9 @@ on:
         branches:
             - main # Trigger on push to the main branch
 
+env:
+    VITE_BASE_API_URL: ${{ secrets.VITE_BASE_API_URL }}
+
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -27,8 +30,6 @@ jobs:
             # Run the build process using Vite
             - name: Build the project
               run: npm run build
-              env:
-                  VITE_BASE_API_URL: ${{ vars.BASE_API_URL }}
 
             # Deploy to GitHub Pages using peaceiris/actions-gh-pages
             - name: Deploy
