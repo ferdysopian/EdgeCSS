@@ -28,7 +28,7 @@ export default function CSSForm() {
 
             // Ensure dimensions are within valid ranges
             width = Math.max(320, Math.min(width, 1920)) // Min width: 320px, Max width: 1920px
-            height = Math.max(480, Math.min(height, 1080)) // Min height: 480px, Max height: 1080px
+            height = Math.max(480, Math.min(height, 2000)) // Min height: 480px, Max height: 2000px
 
             // Only update state if the values have changed
             if (viewport.width !== width || viewport.height !== height) {
@@ -134,7 +134,7 @@ export default function CSSForm() {
                                 <input
                                     type='number'
                                     min='240'
-                                    max='1080'
+                                    max='2000'
                                     value={desktopViewport.height}
                                     onChange={(e) => setDesktopViewport({ ...desktopViewport, height: Number(e.target.value) })}
                                     className='w-full px-3 py-2 rounded border border-gray-300'
